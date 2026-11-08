@@ -1,75 +1,138 @@
-# React + TypeScript + Vite
+# AcademicPortfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**個人學術歷程與升學面試平台**
 
-Currently, two official plugins are available:
+AcademicPortfolio 是一個以 React 與 TypeScript 開發的個人學術作品集網站，旨在完整呈現個人的學習歷程、研究成果、專案作品及學術成就，作為高中升學、特色招生、資優班申請及面試審查的展示平台。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+網站以專業、簡潔及科技感為主要設計方向，讓審查者能夠快速了解個人的學術背景、研究能力、技術實作能力與表達能力。
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+預計提供以下功能：
 
-## Expanding the ESLint configuration
+- **Home**：個人介紹與學術歷程總覽
+- **About**：個人背景、興趣與學習理念
+- **Education**：教育背景與學習經歷
+- **Research**：研究動機、研究方法、實驗過程與研究成果
+- **Projects**：程式設計及其他實作專案
+- **Achievements**：競賽成果、獎項及學術成就
+- **Interview**：自我介紹、面試準備與個人理念
+- **Resume**：個人履歷與 PDF 文件
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Technology | Purpose |
+|---|---|
+| React | 前端介面與元件開發 |
+| TypeScript | 型別安全與程式維護 |
+| Vite | 開發伺服器與建置工具 |
+| CSS | 網站視覺設計與響應式排版 |
+| React Router | 頁面路由管理 |
+| Git | 版本控制 |
+| GitHub | 程式碼儲存與專案管理 |
+| Vercel | 預計使用的網站部署平台 |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+AcademicPortfolio/
+├── public/
+│   ├── images/
+│   ├── documents/
+│   └── favicon.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── data/
+│   ├── styles/
+│   ├── types/
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+開始之前，請先安裝：
 
+- Node.js
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/mamhea/AcademicPortfolio.git
 ```
+
+進入專案目錄：
+
+```bash
+cd AcademicPortfolio
+```
+
+安裝依賴套件：
+
+```bash
+npm install
+```
+
+啟動開發伺服器：
+
+```bash
+npm run dev
+```
+
+開啟終端機顯示的本機網址，即可預覽網站。
+
+### Build
+
+建立正式部署版本：
+
+```bash
+npm run build
+```
+
+預覽正式建置結果：
+
+```bash
+npm run preview
+```
+
+## Design Philosophy
+
+本專案遵循以下設計原則：
+
+1. **Professional**：呈現專業、可信賴的學術形象。
+2. **Minimalist**：保持簡潔的版面與清晰的資訊層級。
+3. **Technology-oriented**：運用現代網頁技術呈現科技感。
+4. **Responsive**：支援電腦、平板及手機等不同裝置。
+5. **Content-focused**：重視研究過程、實作能力與學習成果。
+
+## Development Status
+
+<text>目前處於初期開發階段。</text>
+
+- [x] 建立 React + TypeScript + Vite 專案
+- [x] 初始化 Git 版本控制
+- [ ] 建立網站整體視覺設計
+- [ ] 開發首頁與導覽列
+- [ ] 建立個人介紹及教育背景頁面
+- [ ] 建立研究與專案展示頁面
+- [ ] 建立學術成就頁面
+- [ ] 建立面試與履歷頁面
+- [ ] 響應式設計與網站測試
+- [ ] 部署至 Vercel
+
+## License
+
+本專案目前尚未指定授權條款。
