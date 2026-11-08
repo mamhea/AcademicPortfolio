@@ -135,4 +135,9 @@ npm run preview
 
 ## License
 
-本專案目前尚未指定授權條款。
+The software source code is licensed under the MIT License.
+
+Personal academic content, research materials, photographs, and other
+original materials are excluded from the MIT License.
+
+See [CONTENT-LICENSE.md](CONTENT-LICENSE.md) for details.
