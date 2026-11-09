@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import "./Navbar.css";
+import "./navbar.css";
 
 const navigationItems = [
     { label: "首頁", path: "/", end: true },
