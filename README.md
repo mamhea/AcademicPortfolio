@@ -1,5 +1,7 @@
 # AcademicPortfolio
 
+![CI](https://github.com/mamhea/AcademicPortfolio/actions/workflows/ci.yml/badge.svg)
+
 **個人學術歷程與升學面試平台**
 
 AcademicPortfolio 是一個以 React 與 TypeScript 開發的個人學術作品集網站，旨在完整呈現個人的學習歷程、研究成果、專案作品及學術成就，作為高中升學、特色招生、資優班申請及面試審查的展示平台。
