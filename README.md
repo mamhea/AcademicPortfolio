@@ -143,3 +143,7 @@ Personal academic content, research materials, photographs, and other
 original materials are excluded from the MIT License.
 
 See [CONTENT-LICENSE.md](CONTENT-LICENSE.md) for details.
+
+## CI / Branch Protection Test
+
+Testing GitHub Actions and branch protection rules.
