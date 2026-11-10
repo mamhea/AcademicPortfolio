@@ -1,7 +1,14 @@
 
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import "./App.css";
+
+// Lazy loading：延遲載入頁面元件
+const Home = lazy(() => import("./pages/Home"));
+const PlaceholderPage = lazy(
+  () => import("./pages/PlaceholderPage"),
+);
 
 const pages = [
   { path: "/about", title: "關於我" },
@@ -13,42 +20,30 @@ const pages = [
   { path: "/resume", title: "個人履歷" },
 ];
 
-function Home() {
-  return (
-    <main className="page-placeholder">
-      <p className="page-eyebrow">ACADEMIC PORTFOLIO</p>
-      <h1>個人學術歷程與升學面試平台</h1>
-      <p>探索學習歷程、研究成果與技術實作。</p>
-    </main>
-  );
-}
-
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <main className="page-placeholder">
-      <p className="page-eyebrow">ACADEMIC PORTFOLIO</p>
-      <h1>{title}</h1>
-      <p>此頁面目前正在開發中。</p>
-    </main>
-  );
-}
-
 function App() {
   return (
     <>
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Suspense
+        fallback={
+          <main className="page-placeholder">
+            <p>頁面載入中...</p>
+          </main>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        {pages.map((page) => (
-          <Route
-            key={page.path}
-            path={page.path}
-            element={<PlaceholderPage title={page.title} />}
-          />
-        ))}
-      </Routes>
+          {pages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<PlaceholderPage title={page.title} />}
+            />
+          ))}
+        </Routes>
+      </Suspense>
     </>
   );
 }
