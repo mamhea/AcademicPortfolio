@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -11,6 +10,8 @@ import "./App.css";
 // ========================================
 
 const Home = lazy(() => import("./pages/Home"));
+
+const Profile = lazy(() => import("./pages/profile"));
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -28,7 +29,6 @@ interface PageConfig {
 }
 
 const pages: PageConfig[] = [
-  { path: "/about", title: "關於我" },
   { path: "/education", title: "教育背景" },
   { path: "/research", title: "研究歷程" },
   { path: "/projects", title: "專案作品" },
@@ -61,6 +61,7 @@ function App() {
       <Suspense fallback={<PageLoading />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<Profile />} />
 
           {pages.map((page) => (
             <Route
