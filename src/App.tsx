@@ -1,16 +1,33 @@
 
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/navbar";
+
 import "./App.css";
 
-// Lazy loading：延遲載入頁面元件
+// ========================================
+// Lazy-loaded Pages
+// ========================================
+
 const Home = lazy(() => import("./pages/Home"));
+
+const NotFound = lazy(() => import("./pages/NotFound"));
+
 const PlaceholderPage = lazy(
   () => import("./pages/PlaceholderPage"),
 );
 
-const pages = [
+// ========================================
+// Page Configuration
+// ========================================
+
+interface PageConfig {
+  path: string;
+  title: string;
+}
+
+const pages: PageConfig[] = [
   { path: "/about", title: "關於我" },
   { path: "/education", title: "教育背景" },
   { path: "/research", title: "研究歷程" },
@@ -20,18 +37,28 @@ const pages = [
   { path: "/resume", title: "個人履歷" },
 ];
 
+// ========================================
+// Loading Component
+// ========================================
+
+function PageLoading() {
+  return (
+    <main className="page-loading" aria-live="polite">
+      <p>頁面載入中...</p>
+    </main>
+  );
+}
+
+// ========================================
+// App Component
+// ========================================
+
 function App() {
   return (
-    <>
+    <div className="app">
       <Navbar />
 
-      <Suspense
-        fallback={
-          <main className="page-placeholder">
-            <p>頁面載入中...</p>
-          </main>
-        }
-      >
+      <Suspense fallback={<PageLoading />}>
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -42,9 +69,11 @@ function App() {
               element={<PlaceholderPage title={page.title} />}
             />
           ))}
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 }
 
