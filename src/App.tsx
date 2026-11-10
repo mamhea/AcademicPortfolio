@@ -1,9 +1,33 @@
 
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/navbar";
+
 import "./App.css";
 
-const pages = [
+// ========================================
+// Lazy-loaded Pages
+// ========================================
+
+const Home = lazy(() => import("./pages/Home"));
+
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const PlaceholderPage = lazy(
+  () => import("./pages/PlaceholderPage"),
+);
+
+// ========================================
+// Page Configuration
+// ========================================
+
+interface PageConfig {
+  path: string;
+  title: string;
+}
+
+const pages: PageConfig[] = [
   { path: "/about", title: "關於我" },
   { path: "/education", title: "教育背景" },
   { path: "/research", title: "研究歷程" },
@@ -13,43 +37,43 @@ const pages = [
   { path: "/resume", title: "個人履歷" },
 ];
 
-function Home() {
+// ========================================
+// Loading Component
+// ========================================
+
+function PageLoading() {
   return (
-    <main className="page-placeholder">
-      <p className="page-eyebrow">ACADEMIC PORTFOLIO</p>
-      <h1>個人學術歷程與升學面試平台</h1>
-      <p>探索學習歷程、研究成果與技術實作。</p>
+    <main className="page-loading" aria-live="polite">
+      <p>頁面載入中...</p>
     </main>
   );
 }
 
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <main className="page-placeholder">
-      <p className="page-eyebrow">ACADEMIC PORTFOLIO</p>
-      <h1>{title}</h1>
-      <p>此頁面目前正在開發中。</p>
-    </main>
-  );
-}
+// ========================================
+// App Component
+// ========================================
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Suspense fallback={<PageLoading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        {pages.map((page) => (
-          <Route
-            key={page.path}
-            path={page.path}
-            element={<PlaceholderPage title={page.title} />}
-          />
-        ))}
-      </Routes>
-    </>
+          {pages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<PlaceholderPage title={page.title} />}
+            />
+          ))}
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </div>
   );
 }
 
