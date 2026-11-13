@@ -1,7 +1,12 @@
-
 import type { Education } from "../types";
 
 export const education: Education[] = [
+  {
+    id: "elementary",
+    school: "新竹市立關東國民小學",
+    startDate: "2020",
+    endDate: "2025",
+  },
   {
     id: "junior-high",
     school: "新竹市立光武國民中學",
