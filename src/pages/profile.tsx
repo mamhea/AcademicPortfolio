@@ -1,7 +1,7 @@
 import { SiGithub, SiInstagram } from "react-icons/si";
 import { profile } from "../data/profile";
 
-import "profile.css";
+import "./profile.css";
 
 function Profile() {
   return (
