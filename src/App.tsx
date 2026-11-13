@@ -13,6 +13,8 @@ const Home = lazy(() => import("./pages/Home"));
 
 const Profile = lazy(() => import("./pages/profile"));
 
+const Education = lazy(() => import("./pages/Education"));
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PlaceholderPage = lazy(
@@ -29,7 +31,6 @@ interface PageConfig {
 }
 
 const pages: PageConfig[] = [
-  { path: "/education", title: "教育背景" },
   { path: "/research", title: "研究歷程" },
   { path: "/projects", title: "專案作品" },
   { path: "/achievements", title: "學術成就" },
@@ -62,6 +63,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<Profile />} />
+          <Route path="/education" element={<Education />} />
 
           {pages.map((page) => (
             <Route
